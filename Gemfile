@@ -5,6 +5,7 @@
  gem 'uglifier'
  gem 'coffee-rails'
  gem 'turbolinks'
+ gem 'jquery'
  gem 'jbuilder'
  gem 'bootstrap-sass'
  

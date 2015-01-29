@@ -2,8 +2,18 @@
      <h1>Bento Books </h1> 
      <h2>The best place to find and exchange books.</h2>
      <p>What's in your library? </p>
-     <p>
-       <%= link_to "Log in", "#", class: "btn btn-default btn-lg" %>
-       <%= link_to "Sign up", "#", class: "btn btn-primary btn-lg" %>
-  </p>    
+
+     <% if user_signed_in? %>
+
+     # Say Hello!
+     	
+     <% else %>
+     	
+
+       <p>
+         <%= link_to "Log in", new_user_session_path, class: "btn btn-default btn-lg" %>
+         <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary btn-lg" %>
+       </p>
+
+    <% end %>
 </div>

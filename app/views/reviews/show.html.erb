@@ -10,5 +10,9 @@
   <%= @review.string %>
 </p>
 
-<%= link_to 'Edit', edit_review_path(@review) %> |
+<% if @review.user == current_user %> 
+
+<%= link_to 'Edit', edit_review_path(@review) %> 
+
+<% end %>
 <%= link_to 'Back', reviews_path %>

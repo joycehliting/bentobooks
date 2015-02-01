@@ -1,7 +1,8 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :correct_user, only [:edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+
 
   # GET /reviews
   # GET /reviews.json
@@ -52,7 +53,7 @@ class ReviewsController < ApplicationController
   #Use callbacks to share common setup or constrains between actions.
 
   def set_review
-    @review = Review.find(param[:id])
+    @review = Review.find(params[:id])
   end
 
   def correct_user
@@ -60,8 +61,8 @@ class ReviewsController < ApplicationController
     redirect_to pins_path, notice: "Not authorized to edit this review." if @review.nil?
   end
 
-  def pin_params
-    params.require(:pin).permit(:description, :image)
+  def review_params
+    params.require(:review).permit(:description, :image)
   end
   
 end
@@ -73,7 +74,7 @@ end
       redirect_to reviews_url, notice: 'Review was successfully destroyed.' 
 
     end
-  end
+  
 
   private
 

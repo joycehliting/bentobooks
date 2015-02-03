@@ -5,12 +5,14 @@
  gem 'uglifier'
  gem 'coffee-rails'
  gem 'turbolinks'
+ gem 'jquery-turbolinks'
  gem 'jquery-rails'
  gem 'jbuilder'
  gem 'bootstrap-sass'
  gem 'devise'
  gem 'paperclip', github: 'thoughtbot/paperclip'
  gem 'aws-sdk', '~> 1.20.0'
+ gem 'masonry-rails'
  
 group :development, :test do
 	gem 'sqlite3'

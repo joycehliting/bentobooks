@@ -1,12 +1,11 @@
 class BooksController < ApplicationController
-  before_action :set_review, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_book, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
 
-  # GET /reviews
-  # GET /reviews.json
+  # GET /books
+  # GET /books.json
   def index
     @books = Book.all
   end
@@ -54,13 +53,13 @@ class BooksController < ApplicationController
   private
   #Use callbacks to share common setup or constrains between actions.
 
-  def set_review
+  def set_book
     @book = Book.find(params[:id])
   end
 
   def correct_user
     @book = current_user.books.find_by(id: params[:id])
-    redirect_to pins_path, notice: "Not authorized to edit this book." if @book.nil?
+    redirect_to books_path, notice: "Not authorized to edit this book." if @book.nil?
   end
 
   def book_params
@@ -71,20 +70,20 @@ end
 
 
   def destroy
-    @review.destroy
+    @book.destroy
 
-      redirect_to reviews_url, notice: 'Review was successfully destroyed.' 
+      redirect_to books_url, notice: 'Book was successfully destroyed.' 
 
     end
   
 
   private
 
-    def set_review
-      @review = Review.find(params[:id])
+    def set_book
+      @book = book.find(params[:id])
     end
 
-    def review_params
-      params.require(:review).permit(:description, :string)
+    def book_params
+      params.require(:book).permit(:description, :string)
     end
 

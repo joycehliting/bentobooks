@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  resources :pins
 
-  resources :reviews
+  # resources :reviews
+  resources :books
 
   devise_for :users
-  root 'pages#home'
+  root "books#index"
 
   get 'about' => 'pages#about'
 

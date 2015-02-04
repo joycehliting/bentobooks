@@ -1,5 +1,6 @@
-class ReviewsController < ApplicationController
+class BooksController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
+
   before_action :authenticate_user!, except: [:index, :show]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
@@ -7,23 +8,24 @@ class ReviewsController < ApplicationController
   # GET /reviews
   # GET /reviews.json
   def index
-    @reviews = Review.all
+    @books = Book.all
   end
 
   def show
   end
 
   def new
-    @review = current_user.reviews.build
+    @book = current_user.books.build
   end
 
   def edit
+    p "step 3"
   end
 
   def create
-    @review = current_user.reviews.build(review_params)
-      if @review.save
-       redirect_to @review, notice: 'Review was successfully created.' 
+    @book = current_user.books.build(book_params)
+      if @book.save
+       redirect_to @book, notice: 'book was successfully created.' 
 
       else
        render :new 
@@ -34,8 +36,8 @@ class ReviewsController < ApplicationController
 
   def update
 
-      if @review.update(review_params)
-        redirect_to @review, notice: 'Review was successfully updated.' 
+      if @book.update(book_params)
+        redirect_to @book, notice: 'book was successfully updated.' 
 
       else
         render :edit 
@@ -45,24 +47,24 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    @review.destroy
-    redirect_to reviews_url
+    @book.destroy
+    redirect_to books_url
   end
 
   private
   #Use callbacks to share common setup or constrains between actions.
 
   def set_review
-    @review = Review.find(params[:id])
+    @book = Book.find(params[:id])
   end
 
   def correct_user
-    @review = current_user.reviews.find_by(id: params[:id])
-    redirect_to pins_path, notice: "Not authorized to edit this review." if @review.nil?
+    @book = current_user.books.find_by(id: params[:id])
+    redirect_to pins_path, notice: "Not authorized to edit this book." if @book.nil?
   end
 
-  def review_params
-    params.require(:review).permit(:description, :image)
+  def book_params
+    params.require(:book).permit(:description, :image)
   end
   
 end

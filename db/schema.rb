@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20150201151536) do
 
-  create_table "reviews", force: true do |t|
+  create_table "books", force: true do |t|
     t.string   "description"
     t.string   "string"
     t.datetime "created_at"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20150201151536) do
     t.datetime "image_updated_at"
   end
 
-  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id"
+  add_index "books", ["user_id"], name: "index_books_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

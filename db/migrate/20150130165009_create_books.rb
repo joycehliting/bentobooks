@@ -1,6 +1,6 @@
-class CreateReviews < ActiveRecord::Migration
+class CreateBooks < ActiveRecord::Migration
   def change
-    create_table :reviews do |t|
+    create_table :books do |t|
       t.string :description
       t.string :string
 

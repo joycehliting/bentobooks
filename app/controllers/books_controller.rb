@@ -7,7 +7,7 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
-    @books = Book.all
+    @books = Book.all.order("created_at DESC")
   end
 
   def show
@@ -18,13 +18,12 @@ class BooksController < ApplicationController
   end
 
   def edit
-    p "step 3"
   end
 
   def create
     @book = current_user.books.build(book_params)
       if @book.save
-       redirect_to @book, notice: 'book was successfully created.' 
+       redirect_to @book, notice: 'Book was successfully created.' 
 
       else
        render :new 
@@ -36,7 +35,7 @@ class BooksController < ApplicationController
   def update
 
       if @book.update(book_params)
-        redirect_to @book, notice: 'book was successfully updated.' 
+        redirect_to @book, notice: 'Book was successfully updated.' 
 
       else
         render :edit 
